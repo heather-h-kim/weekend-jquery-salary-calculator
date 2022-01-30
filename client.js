@@ -2,18 +2,11 @@ $(document).ready(readyNow);
 
 function readyNow(){
     $('#submit').on('click', storeData);
-    
+   
 }
 
 //an array of employees
 let list = [];
-
-// //declare global variables as they would be reused in multiple functions
-// let firstName = 0;
-// let lastName = 0;
-// let id = 0;
-// let title = 0;
-// let annualSalary = 0;
 
 //get the data from the input fields, create objects, and push the objects to the array
 function storeData(){
@@ -30,35 +23,50 @@ function storeData(){
        annualSalary: annualSalary
    }
    list.push(employee); 
-   intoTable();
+   $('#fname').val('');
+   $('#lname').val('');
+   $('#id').val('');
+   $('#title').val('');
+   $('#annual-salary').val('');
+   ontoTable();
    
 }    
 
-function intoTable(){
+//display the data in the input field on the table
+function ontoTable(){
     let firstName = list[list.length-1].firstName;
     let lastName = list[list.length-1].lastName;
     let id = list[list.length-1].id;
     let title = list[list.length-1].title;
     let annualSalary = list[list.length-1].annualSalary;
-    $('#tbody').append(`<tr><td>${firstName}</td><td>${lastName}</td><td>${id}</td><td>${title}</td><td>${annualSalary}</td><td></td></tr>`);
+    $('tbody').append(`<tr><td>${firstName}</td><td>${lastName}</td><td>${id}</td><td>${title}</td><td>${annualSalary}</td><td><button class="delete">Delete</td></tr>`);
     calMonthlyCost();
 }
 
+//calculate monthly cost and append it to DOM
 function calMonthlyCost(){
-    console.log('hello');
-    for(let i = 0; i < list.length-1 ; i++){
-        console.log('annual salary is', );
-        
-        
-        // let total = 0;
-        
-        // list[i].monthlyCost = list[i].annualSalary/12;
-        // total += list[i].monthlyCost;
-        // console.log(list[i].monthlyCost);
-        // console.log(total);
-        
+    let total = 0;
+    for(let i = 0; i < list.length ; i++){
+        list[i].monthlyCost = list[i].annualSalary/12;
+        total += list[i].monthlyCost;  
+        totalMonthlyCost = total.toFixed(2);
     }
-    
+    if(totalMonthlyCost> 20000){
+        $('#total').css('background-color', 'red');
+    }
+    $('#total').empty();
+    $('#total').append(totalMonthlyCost);
+    $('table').on('click', '.delete', deleteEmployee);
+}
+
+function deleteEmployee(){
+    console.log($(this));
+    $(this).parents('tr').remove();
+    updateTotalMonthly();
+}
+
+function updateTotalMonthly(){
     
 }
+
 

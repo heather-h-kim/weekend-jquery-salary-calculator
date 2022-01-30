@@ -1,8 +1,45 @@
+body{
+    font-family: sans-serif;
+}
+
+header{
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+}
+
 table, td, th {
     border: 1px solid black;
     border-collapse: collapse;
 }
 
 table{
-    width: 80%
+    font-size: 25px;
+    width: 100%;
 }
+
+#blank{
+    width: 150px;
+}
+
+thead tr{
+    background-color: silver;
+}
+
+#add-employees, #employees{
+    margin: 2em;
+}
+
+#total-cost{
+    font-size: 30px;
+    text-align: right;
+    margin-right: 2em;
+}
+
+input{
+    width: 230px;
+    font-size: 20px;
+}
+

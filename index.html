@@ -14,7 +14,7 @@
     </head>
     <body>
        <header>Salary Calculator</header>
-       <div>
+       <div id="add-employees">
            <h1>Add Employee</h1>
            <input id="fname" type="text" placeholder="First Name">
            <input id="lname" type="text" placeholder="Last Name">
@@ -24,7 +24,7 @@
            <button id="submit">Submit</button>
        </div>
 
-       <div>
+       <div id="employees">
             <h1>Employees</h1>
             <table>
                 <thead>
@@ -34,15 +34,15 @@
                         <th>ID</th>
                         <th>Title</th>
                         <th>Annual Salary</th>
-                        <th>         </th>
+                        <th id="blank"></th>
                     </tr>
                 </thead>
-                <tbody id="tbody">
+                <tbody>
                 </tbody>    
             </table>
         </div>
-        <div id="total">
-            
+        <div>
+            <p id="total-cost">Total Monthly: <span id="total">0</span></p>
         </div>
         
     </body>
