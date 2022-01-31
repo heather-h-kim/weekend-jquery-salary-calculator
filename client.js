@@ -1,8 +1,10 @@
+
+
 $(document).ready(readyNow);
 
 function readyNow(){
     $('#submit').on('click', storeData);
-   
+    
 }
 
 //an array of employees
@@ -51,6 +53,8 @@ function calMonthlyCost(){
         total += list[i].monthlyCost;  
         totalMonthlyCost = total.toFixed(2);
     }
+    console.log('before delete', list);
+    
     if(totalMonthlyCost> 20000){
         $('#total').css('background-color', 'red');
     }
@@ -59,14 +63,29 @@ function calMonthlyCost(){
     $('table').on('click', '.delete', deleteEmployee);
 }
 
+//delete a row on clicking a delete button
 function deleteEmployee(){
-    console.log($(this));
     $(this).parents('tr').remove();
+    
     updateTotalMonthly();
 }
 
 function updateTotalMonthly(){
+    console.log(list);
     
+    let preTotal = Number($('#total').text());
+    let postTotal = 0;
+    for(let i = 0; i < list.length ; i++){
+        list[i].monthlyCost = list[i].annualSalary/12;
+        postTotal += list[i].monthlyCost;  
+        totalMonthlyCost = postTotal.toFixed(2);
+    }
+    console.log(totalMonthlyCost);
+    
+    if(totalMonthlyCost> 20000){
+        $('#total').css('background-color', 'red');
+    }
+    $('#total').empty();
+    $('#total').append(totalMonthlyCost);
 }
-
 

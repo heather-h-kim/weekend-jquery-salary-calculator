@@ -8,6 +8,13 @@ header{
     text-align: center;
     padding-top: 0.3em;
     padding-bottom: 0.3em;
+    background-color: #e6f2ff;
+    color: #00254d;
+}
+
+h1{
+    font-size:25px;
+    
 }
 
 table, td, th {
